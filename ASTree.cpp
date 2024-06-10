@@ -2463,6 +2463,9 @@ PycRef<ASTNode> BuildFromCode(PycRef<PycCode> code, PycModule* mod)
         case Pyc::GEN_START_A:
             stack.pop();
             break;
+        case Pyc:BEGIN_FINALLY:
+            stack.push(nullptr);
+            break;
         default:
             fprintf(stderr, "Unsupported opcode: %s\n", Pyc::OpcodeName(opcode & 0xFF));
             cleanBuild = false;
